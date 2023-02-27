@@ -9,7 +9,7 @@ public class Food : MonoBehaviour
 {
     
     public int points = 10;
-    //public GameObject Eat;
+    public GameObject Eat;
  
 
     void Update()
@@ -21,10 +21,10 @@ public class Food : MonoBehaviour
     {
         Game.points += points;
         Destroy(gameObject); 
-        GenerateNewFood(); 
+        //GenerateNewFood(); 
     }
 
-    public static void GenerateNewFood()
+    /*public static void GenerateNewFood()
     {
         GameObject Eat = (GameObject)Instantiate(Resources.Load("Prefabs/Eat", typeof(GameObject)));
 
@@ -56,6 +56,6 @@ public class Food : MonoBehaviour
         }
 
 
-    }
+    }*/
 
 }
