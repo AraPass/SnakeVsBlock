@@ -1344,7 +1344,7 @@ Transform:
   m_GameObject: {fileID: 86485442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.71, y: 0.6153972, z: -3.76}
-  m_LocalScale: {x: 1, y: 1, z: 5.4964}
+  m_LocalScale: {x: 1, y: 1, z: 18.386007}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 740092861}
@@ -1400,11 +1400,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.2
-  m_Radius: 0.62
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_Height: 0
+  m_Radius: 0.52
+  m_SlopeLimit: 0
+  m_StepOffset: 0
+  m_SkinWidth: 0.1
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &412568922
@@ -1415,7 +1415,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412568919}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1512,7 +1512,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
@@ -1618,6 +1618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740092861}
   - component: {fileID: 740092862}
+  - component: {fileID: 740092863}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1653,11 +1654,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5161d58f8c6bc4b87e9d8ebd2477f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mincount: 5
-  maxcount: 10
+  mincount: 10
+  maxcount: 20
   spawn_dist: 3
   PrefEat:
   - {fileID: 6920020237977647546, guid: d2b6575e58c3d8f4c969808760b0359a, type: 3}
+--- !u!114 &740092863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740092860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb24fab65c2996b42b082803ce2ca3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mincount: 6
+  maxcount: 10
+  spawn_dist: 6
+  PrefWalls:
+  - {fileID: 959531024567046725, guid: 45c6b7b455d48ee428a62578f96a95d9, type: 3}
+  - {fileID: 3416293199299289602, guid: adbd9ee5c8ea4a54c915d5071e0cdf2d, type: 3}
+  - {fileID: 8832777835311163480, guid: cb60622ce6431bf44b3ebf85a3152509, type: 3}
 --- !u!43 &834565262
 Mesh:
   m_ObjectHideFlags: 0
