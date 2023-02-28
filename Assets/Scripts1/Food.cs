@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class Food : MonoBehaviour
 {
@@ -25,14 +28,19 @@ public class Food : MonoBehaviour
         //GenerateNewFood(); 
     }
 
-    /*public static void GenerateNewFood()
+    public static void GenerateNewFood()
     {
-        GameObject Eat = (GameObject)Instantiate(Resources.Load("Prefabs/Eat", typeof(GameObject)));
-       
+        //GameObject Eat = (GameObject)Instantiate(Resources.Load("Prefabs/Eat", typeof(GameObject)));
 
+        /*GameObject parent = new GameObject();
+        Vector3 pose = new Vector3();
+        GameObject obj = (GameObject)Instantiate(Resources.Load("Assets/Prefabs/Eat"), pose, Quaternion.identity, parent.transform);
+        */
+        //GameObject Eat = Instantiate(Eat,Eat.transform);
 
-        while (true)
+        /*while (true)
         {
+
             Eat.transform.position = new Vector3(Random.Range(-40, 41), -1.3f, Random.Range(-40, 41));
             Bounds bounds = Eat.GetComponent<Collider>().bounds; // Eat.GetComponent<GameObject>().bounds Bounds eatBounds =
             bool intersects = false;
@@ -53,9 +61,9 @@ public class Food : MonoBehaviour
             {
                 break;
             }
-        }
+        }*/
 
 
-    }*/
+    }
 
 }
