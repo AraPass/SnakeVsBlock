@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Food : MonoBehaviour
 {
     
     public int points = 10;
     public GameObject Eat;
- 
+
 
     void Update()
     {
@@ -27,19 +28,18 @@ public class Food : MonoBehaviour
     /*public static void GenerateNewFood()
     {
         GameObject Eat = (GameObject)Instantiate(Resources.Load("Prefabs/Eat", typeof(GameObject)));
-
-        
+       
 
 
         while (true)
         {
-            Eat.transform.position = new Vector3(Random.Range(-40, 41), 0, Random.Range(-40, 41));
+            Eat.transform.position = new Vector3(Random.Range(-40, 41), -1.3f, Random.Range(-40, 41));
             Bounds bounds = Eat.GetComponent<Collider>().bounds; // Eat.GetComponent<GameObject>().bounds Bounds eatBounds =
             bool intersects = false;
 
             foreach (Collider objectColiider in FindObjectsOfType(typeof(Collider)).Cast<Collider>())
             {
-                if (objectColiider != Eat.GetComponent<Collider>())
+                if (objectColiider != Eat.GetComponent<GameObject>())
                 {
                     if (objectColiider.bounds.Intersects(bounds))
                     {

@@ -1913,7 +1913,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1939,7 +1939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.12307997, y: -0, z: -0, w: 0.9923968}
-  m_LocalPosition: {x: 0, y: 3.05, z: -9.75}
+  m_LocalPosition: {x: 0, y: 2.723, z: -11.776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1958,7 +1958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5610a1f30b336774bbed40fe1e2682a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 412568925}
+  SnakeHeadCam: {x: 0, y: 4, z: -6.5}
+  speed: 3
 --- !u!1001 &1247203855
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Controls : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 mouse = new Vector3 (Input.GetAxis("Mouse X")* speed * Time.deltaTime, 0, 0);
+            Vector3 mouse = new Vector3 (Input.GetAxis("Mouse X")* speed * Time.fixedDeltaTime, 0, 0);
             transform.Translate(mouse * speed);
 
         }

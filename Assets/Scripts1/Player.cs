@@ -59,12 +59,12 @@ public class Player : MonoBehaviour
 
 
 
-    void Update()
+    void FixedUpdate()
     {
         SnakeStap();
 
         float horizontal = Input.GetAxis("Horizontal");
-        transform.Rotate(speed * Time.deltaTime * horizontal, 0, 0);
+        //transform.Rotate(speed * Time.deltaTime * horizontal, 0, 0);
         _testing = true;
         _controller.Move(transform.forward * speed * Time.deltaTime);
 

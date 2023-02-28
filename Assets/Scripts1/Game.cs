@@ -12,12 +12,12 @@ public class Game : MonoBehaviour
 
     public void Awake()
     {
-        points = 0;
+        points = 10;
         //Food.GenerateNewFood();
     
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (_lastPonts == points) return;
