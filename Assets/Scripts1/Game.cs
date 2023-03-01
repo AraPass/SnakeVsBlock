@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
     public void Awake()
     {
         points = 10;
-        //Food.GenerateNewFood();
+        
     
     }
 

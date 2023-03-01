@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Food;
 
@@ -23,6 +25,11 @@ public class Player : MonoBehaviour
 
     public IList BodySnake = new List<Transform>();
     private CharacterController _controller;
+
+    public int Lenght = 1;
+    public TextMeshPro PointText;
+
+    private bool methodoff;
 
     public void AddTile()
     {
@@ -55,6 +62,8 @@ public class Player : MonoBehaviour
         positions.Add(Tail.position);
         
         _controller = GetComponent<CharacterController>();
+
+        PointText.SetText(Lenght.ToString());
     }    
 
 
@@ -106,37 +115,26 @@ public class Player : MonoBehaviour
                 Eat.Eating();
                 AddTile();
                 AddCircle();
+                Lenght++;
+                PointText.SetText(Lenght.ToString());
             }
-            /*else
+            
+            if (hit.collider.TryGetComponent<Wall>(out var wall))
             {
-                SceneManager.LoadScene("GameOver");
+                Lenght = 0;
+                PointText.SetText(Lenght.ToString());
+                Debug.Log("game over");
+                if(methodoff == false) AddTile();
+                GetComponent<Controls>().enabled = false;
+                _controller.enabled = false;
+                //SceneManager.LoadScene("GameOver");
             }
 
             _testing = false;
-            */
+            
         }
     }
 }
-    
-    
-   /* public void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (_testing)
-        {
-            if (hit.collider.TryGetComponent<Food>(out var Eat))
-            {
-                Eat.Eating();
-                AddTile();
-            }
-            else
-            {
-                SceneManager.LoadScene("GameOver");
-            }
-
-            _testing = false;
-        } 
-    }
-    */
 
 
 

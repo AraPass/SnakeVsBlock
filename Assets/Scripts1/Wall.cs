@@ -7,11 +7,11 @@ public class Wall : MonoBehaviour
 {
     //public bool Crash = true;
 
-    public void OnCollisionEnter(Collision collision)
-     {
-        print(collision.gameObject);
-        //if (!collision.collider.TryGetComponent<Player>(out var Head))
-        //Debug.Log("game over");
+    public void OnTriggerEnter(Collider other)
+    {
+        //print(collision.gameObject);
+        //if (collision.collider.TryGetComponent<Player>(out var Head))
+        Debug.Log("game over");
 
      }
 
