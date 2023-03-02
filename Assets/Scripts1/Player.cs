@@ -130,6 +130,17 @@ public class Player : MonoBehaviour
                 //SceneManager.LoadScene("GameOver");
             }
 
+            if (hit.collider.TryGetComponent<Finish>(out var finish))
+            {
+                //Lenght = 0;
+                //PointText.SetText(Lenght.ToString());
+                Debug.Log("you win");
+                if (methodoff == false) AddTile();
+                GetComponent<Controls>().enabled = false;
+                _controller.enabled = false;
+                //SceneManager.LoadScene("GameOver");
+            }
+
             _testing = false;
             
         }
