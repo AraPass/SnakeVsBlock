@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Food;
+using static Game;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
@@ -127,7 +128,9 @@ public class Player : MonoBehaviour
                 if(methodoff == false) AddTile();
                 GetComponent<Controls>().enabled = false;
                 _controller.enabled = false;
-                //SceneManager.LoadScene("GameOver");
+                //GetComponent<Game>().ReloadLevel();
+                ReloadLevel();
+                //SceneManager.LoadScene(1);
             }
 
             if (hit.collider.TryGetComponent<Finish>(out var finish))
@@ -138,13 +141,35 @@ public class Player : MonoBehaviour
                 if (methodoff == false) AddTile();
                 GetComponent<Controls>().enabled = false;
                 _controller.enabled = false;
-                //SceneManager.LoadScene("GameOver");
+
+
+                ReloadLevel();
+                //SceneManager.LoadScene(1);
             }
 
             _testing = false;
             
         }
     }
+
+     public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+    }
+
+
+    private const string LevelIndexKey = "LevelIndex";
+    public int LevelIndex
+    {
+        get => PlayerPrefs.GetInt(LevelIndexKey, 0);
+        private set
+        {
+            PlayerPrefs.SetInt(LevelIndexKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
+    //private const string LevelIndexKey = "LevelIndex";
 }
 
 

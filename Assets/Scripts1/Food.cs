@@ -28,6 +28,10 @@ public class Food : MonoBehaviour
         
     }
 
-    
-
+   /* public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.TryGetComponent<Wall>(out var walls))
+            Destroy(gameObject);
+    }
+   */
 }

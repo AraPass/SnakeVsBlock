@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -25,6 +26,28 @@ public class Game : MonoBehaviour
         _pointsString = "Score: " + points.ToString("0000");
     }
 
-    
 
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private const string LevelIndexKey = "LevelIndex";
+    public int LevelIndex
+    {
+        get => PlayerPrefs.GetInt(LevelIndexKey, 0);
+        set
+        {
+            PlayerPrefs.SetInt(LevelIndexKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    /* public void ReloadLevel()
+     {
+         SceneManager.LoadScene(1);
+     }
+
+     //SceneManager.GetActiveScene().buildIndex
+    */
 }
