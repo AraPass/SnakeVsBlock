@@ -1705,6 +1705,7 @@ MonoBehaviour:
   Head: {fileID: 412568925}
   Tail: {fileID: 2366444098620050687, guid: 83282288e0e82e74d8ced064922bad7e, type: 3}
   CircleD: 1
+  wall_out: {fileID: 6136346266301306809, guid: 8752118423a75c744be96a578bf54af4, type: 3}
   Lenght: 1
   PointText: {fileID: 1420032564}
 --- !u!143 &412568921

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Food;
 using static Game;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     public Transform Head;
     public Transform Tail;
     public float CircleD;
+    public GameObject wall_out;
     private List<Transform> tails = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
 
@@ -55,6 +57,15 @@ public class Player : MonoBehaviour
         positions.Add(circle.position);
     }
 
+    public void DeleteCircle()
+    {
+        
+        GetComponent<Player>().tails.Clear();
+        GetComponent<Player>().positions.Clear();
+        Destroy(Head);
+
+    }
+
     private void Start()
     {
         //BodySnake.Clear();
@@ -62,6 +73,7 @@ public class Player : MonoBehaviour
         
         positions.Add(Tail.position);
         
+
         _controller = GetComponent<CharacterController>();
 
         PointText.SetText(Lenght.ToString());
@@ -89,11 +101,15 @@ public class Player : MonoBehaviour
 
             dist -= CircleD;
         }
+
         
+
         for (int j = 0; j < tails.Count; j++)
         {
             tails[j].position = Vector3.Lerp(positions[j + 1], positions[j], dist / CircleD);
         }
+       
+
     }
 
     void SnakeStap()
@@ -122,14 +138,30 @@ public class Player : MonoBehaviour
             
             if (hit.collider.TryGetComponent<Wall>(out var wall))
             {
-                Lenght = 0;
-                PointText.SetText(Lenght.ToString());
-                Debug.Log("game over");
-                if(methodoff == false) AddTile();
-                GetComponent<Controls>().enabled = false;
-                _controller.enabled = false;
+                if (Lenght <= wall.wallcount1)
+                {
+                    Debug.Log("game over");
+                    if (methodoff == false) AddTile();
+                    GetComponent<Controls>().enabled = false;
+                    //ReloadLevel();
+                }
+                else
+                {
+                    DeleteCircle();
+                    Lenght = Lenght - wall.wallcount1;
+                    PointText.SetText(Lenght.ToString());
+                    wall.SnakeDestroy();
+
+                }
+                //Lenght--;
+               // PointText.SetText(Lenght.ToString());
+                //wall.SnakeDestroy();
+                //Debug.Log("game over");
+                //if(methodoff == false) AddTile();
+                //GetComponent<Controls>().enabled = false;
+                //_controller.enabled = false;
                 //GetComponent<Game>().ReloadLevel();
-                ReloadLevel();
+                //ReloadLevel();
                 //SceneManager.LoadScene(1);
             }
 
@@ -154,7 +186,7 @@ public class Player : MonoBehaviour
 
      public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
