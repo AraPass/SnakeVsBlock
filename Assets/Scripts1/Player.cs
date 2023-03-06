@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Food;
@@ -19,12 +21,22 @@ public class Player : MonoBehaviour
 
     private GameObject SnakeBody;
 
-    public Transform Head;
-    public Transform Tail;
+    public GameObject Head;
+    public GameObject Tail;
+    private GameObject circle;
+   
     public float CircleD;
     public GameObject wall_out;
     private List<Transform> tails = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
+
+    
+    
+    public List<GameObject> tailsCLONE = new List<GameObject>();
+    
+   
+
+
 
     public IList BodySnake = new List<Transform>();
     private CharacterController _controller;
@@ -52,17 +64,76 @@ public class Player : MonoBehaviour
 
     public void AddCircle()
     {
-        Transform circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head);
-        tails.Add(circle);
-        positions.Add(circle.position);
+        circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head.transform);
+        tailsCLONE.Add(circle);
+        tails.Add(circle.transform);
+        positions.Add(circle.transform.position);
+        
     }
 
-    public void DeleteCircle()
+
+   /* public void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.name == "Wall")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+   */
+    public void DeleteCircle()
+
+
+    {
+
         
-        GetComponent<Player>().tails.Clear();
-        GetComponent<Player>().positions.Clear();
-        Destroy(Head);
+        tailsCLONE.Remove(circle); 
+        tails.Remove(circle.transform);
+        positions.Remove(circle.transform.position);
+        Destroy(circle.gameObject);
+        //Destroy(circle.gameObject);
+        
+
+        //for (int i = 0; i < tails.Count; i--)
+        //Destroy(Tail.gameObject);
+
+        //GameObject fuckchild = transform.Find("Tail (Clone)").gameObject;
+        
+       /* if (fuckchild != null)
+        {
+            Destroy(fuckchild);
+        }
+       */
+       /* if (transform.name == "Tail (Clone)")
+        {
+            
+            Destroy(this);
+        }
+       */
+         //GameObject circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head);
+        
+
+        /*if (circle.childCount < tails.Count)
+         //for (int i = 0; i < circle.childCount; i--)
+         {
+
+                  //tails.Remove(circle);
+                  //positions.Remove(circle.position);
+                  Destroy(gameObject);
+              }
+             */
+        //GetComponent<Player>().tails.Clear();
+        //GetComponent<Player>().positions.Clear();
+        //Transform circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head);
+
+        /* for (int i = 0; i > tails.Count; i--)
+             {
+             tails.Clear();
+                 //Destroy(transform.GetChild(i--).gameObject);
+             }
+
+         */
+
+
 
     }
 
@@ -71,7 +142,7 @@ public class Player : MonoBehaviour
         //BodySnake.Clear();
         for (int i = 0; i < 5; i++) AddTile();
         
-        positions.Add(Tail.position);
+        positions.Add(Tail.transform.position);
         
 
         _controller = GetComponent<CharacterController>();
@@ -90,10 +161,10 @@ public class Player : MonoBehaviour
         _testing = true;
         _controller.Move(transform.forward * speed * Time.deltaTime);
 
-        float dist = ((Vector3)Head.position - positions[0]).magnitude;
+        float dist = ((Vector3)Head.transform.position - positions[0]).magnitude;
         if (dist > CircleD)
         {
-            Vector3 direct = ((Vector3)Head.position - positions[0]).normalized;
+            Vector3 direct = ((Vector3)Head.transform.position - positions[0]).normalized;
 
             //positions.Insert(0, Head.position);
             positions.Insert(0, positions[0] + direct * CircleD);
@@ -102,11 +173,12 @@ public class Player : MonoBehaviour
             dist -= CircleD;
         }
 
-        
 
+        
         for (int j = 0; j < tails.Count; j++)
         {
             tails[j].position = Vector3.Lerp(positions[j + 1], positions[j], dist / CircleD);
+            
         }
        
 
@@ -143,7 +215,9 @@ public class Player : MonoBehaviour
                     Debug.Log("game over");
                     if (methodoff == false) AddTile();
                     GetComponent<Controls>().enabled = false;
-                    //ReloadLevel();
+                    _controller.enabled = false;
+                    
+                    ReloadLevel();
                 }
                 else
                 {
