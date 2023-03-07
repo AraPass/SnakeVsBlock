@@ -133,6 +133,7 @@ MonoBehaviour:
   maxcount: 9
   WallNumbers: 03000000050000000100000002000000060000000700000004000000
   Text: {fileID: 1842348557709674000}
+  wallcount1: 0
 --- !u!114 &15496616557509212
 MonoBehaviour:
   m_ObjectHideFlags: 0

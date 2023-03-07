@@ -97,6 +97,8 @@ MonoBehaviour:
   mincount: 0
   maxcount: 0
   WallNumbers: 
+  Text: {fileID: 0}
+  wallcount1: 0
 --- !u!114 &1143073181875531265
 MonoBehaviour:
   m_ObjectHideFlags: 0

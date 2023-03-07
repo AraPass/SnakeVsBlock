@@ -32,7 +32,7 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private const string LevelIndexKey = "LevelIndex";
+    
     public int LevelIndex
     {
         get => PlayerPrefs.GetInt(LevelIndexKey, 0);
@@ -42,6 +42,7 @@ public class Game : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+    private const string LevelIndexKey = "LevelIndex";
 
     /* public void ReloadLevel()
      {

@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
     public int Lenght = 1;
     public TextMeshPro PointText;
 
+    //public GameObject Menu;
+    public GameObject GameOver;
+    public GameObject Winner;
+
     private bool methodoff;
 
     public void AddTile()
@@ -137,6 +141,15 @@ public class Player : MonoBehaviour
 
     }
 
+    public void CanvasOverEnable()
+    {
+        GameOver.SetActive(true);
+    }
+
+    public void CanvasWinEnable()
+    {
+        Winner.SetActive(true);
+    }
     private void Start()
     {
         //BodySnake.Clear();
@@ -212,12 +225,14 @@ public class Player : MonoBehaviour
             {
                 if (Lenght <= wall.wallcount1)
                 {
-                    Debug.Log("game over");
+                    
+                    
                     if (methodoff == false) AddTile();
                     GetComponent<Controls>().enabled = false;
                     _controller.enabled = false;
-                    
-                    ReloadLevel();
+
+                    CanvasOverEnable();
+                    //ReloadLevel();
                 }
                 else
                 {
@@ -248,8 +263,9 @@ public class Player : MonoBehaviour
                 GetComponent<Controls>().enabled = false;
                 _controller.enabled = false;
 
-
-                ReloadLevel();
+                CanvasWinEnable();
+                //ReloadLevel();
+                LevelIndex++;
                 //SceneManager.LoadScene(1);
             }
 
@@ -264,7 +280,31 @@ public class Player : MonoBehaviour
     }
 
 
-    private const string LevelIndexKey = "LevelIndex";
+   /* public enum State
+    {
+        Playing,
+        Loss,
+        Won,
+    }
+
+    public State CurrentState { get; private set; }
+
+    public void PlayerDie()
+    {
+        if (CurrentState != State.Playing) return;
+
+        CurrentState = State.Loss;
+    }
+
+    public void PlayerWin()
+    {
+        if (CurrentState != State.Playing) return;
+
+        CurrentState = State.Won;
+        LevelIndex++;
+    }
+   */
+    
     public int LevelIndex
     {
         get => PlayerPrefs.GetInt(LevelIndexKey, 0);
@@ -274,7 +314,7 @@ public class Player : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    
+    private const string LevelIndexKey = "LevelIndex";
     //private const string LevelIndexKey = "LevelIndex";
 }
 
