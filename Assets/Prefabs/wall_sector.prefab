@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5a9fcdb78353d8e42b118f9912facbb0, type: 2}
+  - {fileID: 2100000, guid: 0826130be46b7be4eafb2f7b8da3e504, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,6 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe72a6c7c1024147b1ef1c6153b2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Color_Wall: 1
+  Easy: {fileID: 2100000, guid: 0826130be46b7be4eafb2f7b8da3e504, type: 2}
+  Hard: {fileID: 2100000, guid: 1cb1df0e7aad3af4a8fc28d4817b87b3, type: 2}
   mincount: 2
   maxcount: 9
   WallNumbers: 03000000050000000100000002000000060000000700000004000000
@@ -175,15 +178,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a6e39ced0ea046bcb636c3f0b2e2a745, type: 3}
       propertyPath: m_fontColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a6e39ced0ea046bcb636c3f0b2e2a745, type: 3}
       propertyPath: m_fontColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a6e39ced0ea046bcb636c3f0b2e2a745, type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: a6e39ced0ea046bcb636c3f0b2e2a745, type: 3}
       propertyPath: m_fontSizeBase

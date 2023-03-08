@@ -8,6 +8,10 @@ using static Player;
 
 public class Wall : MonoBehaviour
 {
+    public bool Color_Wall;
+    public Material Easy;
+    public Material Hard;
+
     public int mincount;
     public int maxcount;
 
@@ -15,10 +19,18 @@ public class Wall : MonoBehaviour
     public int[] WallNumbers;
     public TextMeshPro Text;
     public int wallcount1;
+
+    public void UpdateMaterials()
+    {
+        Renderer wallrender = GetComponent<Renderer>();
+        wallrender.sharedMaterial = Color_Wall ? Easy : Hard;
+    }
     
 
     public void Awake()
     {
+
+        UpdateMaterials();
         
         int wallcount = Random.Range(mincount, maxcount);
         for (int i = 0; i < wallcount; i++)
@@ -52,6 +64,11 @@ public class Wall : MonoBehaviour
 
         }*/
 
+    }
+
+    private void OnValidate()
+    {
+        UpdateMaterials();
     }
     //Text.text = WallNumbers[Random.Range(0, WallNumbers.Length + 1)];
 
