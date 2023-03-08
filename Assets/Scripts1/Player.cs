@@ -15,6 +15,10 @@ using static UnityEditor.Progress;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
+
+    public GameObject MenuStart;
+    
+    public float timer = 0;
     public float speed = 6;
     private bool _testing = false;
     
@@ -149,10 +153,19 @@ public class Player : MonoBehaviour
     public void CanvasWinEnable()
     {
         Winner.SetActive(true);
+
+
+    }
+
+    public void TimeStarting()
+    {
+        Time.timeScale = 1;
     }
     private void Start()
     {
         //BodySnake.Clear();
+
+        Time.timeScale = timer;
         for (int i = 0; i < 5; i++) AddTile();
         
         positions.Add(Tail.transform.position);
@@ -161,6 +174,8 @@ public class Player : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         PointText.SetText(Lenght.ToString());
+
+
     }    
 
 
@@ -232,6 +247,7 @@ public class Player : MonoBehaviour
                     _controller.enabled = false;
 
                     CanvasOverEnable();
+                    //Time.timeScale = timer;
                     //ReloadLevel();
                 }
                 else
@@ -258,7 +274,7 @@ public class Player : MonoBehaviour
             {
                 //Lenght = 0;
                 //PointText.SetText(Lenght.ToString());
-                Debug.Log("you win");
+                
                 if (methodoff == false) AddTile();
                 GetComponent<Controls>().enabled = false;
                 _controller.enabled = false;
@@ -276,9 +292,11 @@ public class Player : MonoBehaviour
 
      public void ReloadLevel()
     {
+        MenuStart.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
-
+   
 
    /* public enum State
     {

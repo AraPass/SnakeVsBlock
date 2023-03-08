@@ -5,18 +5,28 @@ using UnityEngine;
 public class MenuLoss : MonoBehaviour
 {
     [SerializeField] Player player;
-
+    public float timer = 0;
     public GameObject menu;
-    public GameObject level;
+   
+    
     public void CanvasMenuLossEnable()
     {
+
         menu.SetActive(true);
-        level.SetActive(false);
+       
     }
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
+        {
             CanvasMenuLossEnable();
+            player.enabled = false;
+            //Invoke("CanvasMenuLossEnable", 40f);
+            //Time.timeScale = timer;
+            //Invoke("CanvasMenuLossEnable", 40f);
+
+        }
+       
             
     }
 }

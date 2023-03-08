@@ -27,11 +27,11 @@ public class Game : MonoBehaviour
     }
 
 
-    public void ReloadLevel()
+  /*  public void ReloadLevel()
     {
         SceneManager.LoadScene(1);
     }
-
+  */
     
     public int LevelIndex
     {
