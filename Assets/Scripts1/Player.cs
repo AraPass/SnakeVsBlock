@@ -15,9 +15,13 @@ using static UnityEditor.Progress;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] Wall wall;
 
     public GameObject MenuStart;
-    
+    public ParticleSystem WinGets;
+    public ParticleSystem wallboom;
+
+
     public float timer = 0;
     public float speed = 6;
     private bool _testing = false;
@@ -92,33 +96,38 @@ public class Player : MonoBehaviour
 
 
     {
-
+        //int i = Lenght - wall.wallcount1;
+        
         
         tailsCLONE.Remove(circle); 
         tails.Remove(circle.transform);
         positions.Remove(circle.transform.position);
-        Destroy(circle.gameObject);
-        //Destroy(circle.gameObject);
-        
 
-        //for (int i = 0; i < tails.Count; i--)
+        //Destroy(tailsCLONE[i].gameObject);
+        //Destroy(tails[i].gameObject);
+       
+        //Destroy(tailsCLONE[].gameObject);
+        Destroy(circle.gameObject);
         //Destroy(Tail.gameObject);
 
         //GameObject fuckchild = transform.Find("Tail (Clone)").gameObject;
-        
-       /* if (fuckchild != null)
-        {
-            Destroy(fuckchild);
-        }
-       */
-       /* if (transform.name == "Tail (Clone)")
-        {
-            
-            Destroy(this);
-        }
-       */
-         //GameObject circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head);
-        
+
+        /* if (fuckchild != null)
+
+
+         //for (int i = 0; i < tails.Count; i--)
+         {
+             Destroy(fuckchild);
+         }
+        */
+        /* if (transform.name == "Tail (Clone)")
+         {
+
+             Destroy(this);
+         }
+        */
+        //GameObject circle = Instantiate(Tail, positions[positions.Count - 1], Quaternion.identity, Head);
+
 
         /*if (circle.childCount < tails.Count)
          //for (int i = 0; i < circle.childCount; i--)
@@ -240,7 +249,7 @@ public class Player : MonoBehaviour
             {
                 if (Lenght <= wall.wallcount1)
                 {
-                    
+                    wallboom.Play();
                     
                     if (methodoff == false) AddTile();
                     GetComponent<Controls>().enabled = false;
@@ -274,7 +283,8 @@ public class Player : MonoBehaviour
             {
                 //Lenght = 0;
                 //PointText.SetText(Lenght.ToString());
-                
+                WinGets.Play();
+
                 if (methodoff == false) AddTile();
                 GetComponent<Controls>().enabled = false;
                 _controller.enabled = false;
