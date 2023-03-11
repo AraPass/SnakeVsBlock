@@ -3410,9 +3410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5161d58f8c6bc4b87e9d8ebd2477f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mincount: 65
-  maxcount: 75
-  spawn_dist: 3
+  mincount: 70
+  maxcount: 80
+  spawn_dist: 2
   PrefEat:
   - {fileID: 6920020237977647546, guid: d2b6575e58c3d8f4c969808760b0359a, type: 3}
 --- !u!114 &740092863
@@ -3617,7 +3617,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27692
+  m_Name: pb_Mesh43670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4448,7 +4448,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27900
+  m_Name: pb_Mesh43934
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16194,7 +16194,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27712
+  m_Name: pb_Mesh43690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
