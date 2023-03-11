@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Wall wall;
 
+    public AudioClip eat_clip;
     public GameObject MenuStart;
     public ParticleSystem WinGets;
     public ParticleSystem wallboom;
@@ -238,11 +239,14 @@ public class Player : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Food>(out var Eat))
             {
+                
                 Eat.Eating();
+                Eat_Music();
                 AddTile();
                 AddCircle();
                 Lenght++;
                 PointText.SetText(Lenght.ToString());
+                
             }
             
             if (hit.collider.TryGetComponent<Wall>(out var wall))
@@ -250,7 +254,10 @@ public class Player : MonoBehaviour
                 if (Lenght <= wall.wallcount1)
                 {
                     wallboom.Play();
+
+                    wall.Wall_Crash_Music();
                     
+
                     if (methodoff == false) AddTile();
                     GetComponent<Controls>().enabled = false;
                     _controller.enabled = false;
@@ -343,7 +350,13 @@ public class Player : MonoBehaviour
         }
     }
     private const string LevelIndexKey = "LevelIndex";
-    //private const string LevelIndexKey = "LevelIndex";
+
+    public void Eat_Music()
+    {
+        AudioSource eataudio = GetComponent<AudioSource>();
+        eataudio.PlayOneShot(eat_clip, 0.2f);
+    }
+
 }
 
 

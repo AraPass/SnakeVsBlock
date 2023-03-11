@@ -9,6 +9,7 @@ using static Player;
 public class Wall : MonoBehaviour
 {
 
+
     public int mincount;
     public int maxcount;
 
@@ -56,6 +57,12 @@ public class Wall : MonoBehaviour
 
         }*/
 
+    }
+
+    public void Wall_Crash_Music()
+    {
+        AudioSource wallaudio = GetComponent<AudioSource>();
+        wallaudio.Play();
     }
 
     
