@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Food;
 using static Game;
-using static UnityEditor.Progress;
+
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
