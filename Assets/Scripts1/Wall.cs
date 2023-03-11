@@ -8,6 +8,8 @@ using static Player;
 
 public class Wall : MonoBehaviour
 {
+
+
     public int mincount;
     public int maxcount;
 
@@ -15,10 +17,13 @@ public class Wall : MonoBehaviour
     public int[] WallNumbers;
     public TextMeshPro Text;
     public int wallcount1;
+
+   
     
 
     public void Awake()
     {
+
         
         int wallcount = Random.Range(mincount, maxcount);
         for (int i = 0; i < wallcount; i++)
@@ -53,6 +58,14 @@ public class Wall : MonoBehaviour
         }*/
 
     }
+
+    public void Wall_Crash_Music()
+    {
+        AudioSource wallaudio = GetComponent<AudioSource>();
+        wallaudio.Play();
+    }
+
+    
     //Text.text = WallNumbers[Random.Range(0, WallNumbers.Length + 1)];
 
     //int WallNumbers = Random.Range(mincount, maxcount);
